@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Administración | CimaMuebles</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="CimaMuebles, ir a la tienda">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="8" fill="#f2b705"/><path d="M6 25 L14 11 L19 19 L22 14 L28 25 Z" fill="#00573f"/></svg>
+      <span>Cima<b>Muebles</b></span>
+    </a>
+    <nav aria-label="Administración">
+      <a href="index.html">Ver tienda</a>
+    </nav>
+    <div class="acciones">
+      <span class="sesion" id="sesion" hidden></span>
+      <button type="button" class="carrito-btn" id="salir" hidden>Salir</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap admin">
+
+  <!-- Inicio de sesión -->
+  <section id="vistaLogin" class="tarjeta login">
+    <h1>Panel de administración</h1>
+    <p class="suave">Entra con la cuenta de administrador para gestionar productos y órdenes.</p>
+    <form id="formLogin" novalidate>
+      <label for="loginEmail">Correo</label>
+      <input id="loginEmail" type="email" autocomplete="username" required>
+      <label for="loginPassword">Contraseña</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" required>
+      <p class="mensaje" id="mensajeLogin" role="status" aria-live="polite"></p>
+      <button class="pagar" type="submit">Entrar</button>
+    </form>
+  </section>
+
+  <!-- Panel -->
+  <section id="vistaPanel" hidden>
+    <div class="pestanas" role="tablist">
+      <button type="button" role="tab" id="tabProductos" aria-selected="true" data-vista="productos">Productos</button>
+      <button type="button" role="tab" id="tabOrdenes" aria-selected="false" data-vista="ordenes">Órdenes</button>
+    </div>
+    <p class="mensaje" id="mensajeGlobal" role="status" aria-live="polite"></p>
+
+    <div id="vistaProductos">
+      <div class="barra">
+        <h2>Productos <small id="contadorProductos"></small></h2>
+        <button type="button" class="btn-cta" id="nuevoProducto">Nuevo producto</button>
+      </div>
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr><th>Foto</th><th>Nombre</th><th>Categoría</th><th class="num">Precio</th><th class="num">Stock</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="tablaProductos"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="vistaOrdenes" hidden>
+      <div class="barra"><h2>Órdenes <small id="contadorOrdenes"></small></h2></div>
+      <div class="tabla-caja">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Fecha</th><th>Cliente</th><th>Productos</th><th class="num">Total</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="tablaOrdenes"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Formulario de producto (crear y editar) -->
+<dialog id="dlgProducto" aria-labelledby="tituloDialogo">
+  <form id="formProducto" novalidate>
+    <h2 id="tituloDialogo">Nuevo producto</h2>
+    <div class="campos">
+      <div class="campo ancho">
+        <label for="pNombre">Nombre</label>
+        <input id="pNombre" maxlength="120" required>
+      </div>
+      <div class="campo ancho">
+        <label for="pDescripcion">Descripción</label>
+        <textarea id="pDescripcion" rows="3" maxlength="2000"></textarea>
+      </div>
+      <div class="campo">
+        <label for="pPrecio">Precio (MXN)</label>
+        <input id="pPrecio" type="number" min="0" step="0.01" required>
+      </div>
+      <div class="campo">
+        <label for="pAnterior">Precio anterior (opcional)</label>
+        <input id="pAnterior" type="number" min="0" step="0.01">
+      </div>
+      <div class="campo">
+        <label for="pStock">Stock</label>
+        <input id="pStock" type="number" min="0" step="1" required>
+      </div>
+      <div class="campo">
+        <label for="pCategoria">Categoría</label>
+        <select id="pCategoria" required></select>
+      </div>
+      <div class="campo ancho">
+        <label for="pImagenes">Fotos (una por línea: nombre del archivo en S3 o URL completa)</label>
+        <textarea id="pImagenes" rows="3" placeholder="sala-sofa-1.jpg&#10;sala-sofa-2.jpg"></textarea>
+      </div>
+      <div class="campo ancho">
+        <label for="pMedidas">Medidas y datos (uno por línea)</label>
+        <textarea id="pMedidas" rows="2" placeholder="210 × 90 × 85 cm"></textarea>
+      </div>
+      <label class="check ancho" for="pNuevo"><input id="pNuevo" type="checkbox"> Mostrar etiqueta "NUEVO"</label>
+    </div>
+    <p class="mensaje" id="mensajeProducto" role="status" aria-live="polite"></p>
+    <div class="botones">
+      <button type="button" class="secundario" id="cancelarProducto">Cancelar</button>
+      <button type="submit" class="pagar" id="guardarProducto">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<title>CimaMuebles</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="promo"><div class="wrap"><span>ENVÍO GRATIS EN MEXICALI, TIJUANA Y ENSENADA</span><span>·</span><span>ARMADO INCLUIDO</span></div></div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="CimaMuebles">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="8" fill="#f2b705"/><path d="M6 25 L14 11 L19 19 L22 14 L28 25 Z" fill="#00573f"/></svg>
+      <span>Cima<b>Muebles</b></span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#catalogo">Productos</a>
+      <a href="#catalogo">Salas</a>
+      <a href="#catalogo">Comedor</a>
+      <a href="#beneficios">¿Por qué CIMA?</a>
+      <a href="#beneficios">Soporte</a>
+      <a href="#beneficios">Preguntas</a>
+    </nav>
+    <div class="acciones">
+      <a class="btn-cta" href="#catalogo">Comprar</a>
+      <button class="carrito-btn" id="abrirCarrito" aria-label="Abrir carrito">Carrito <span class="n" id="cuenta">0</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <h1>Muebles que llegan a la <em>cima</em> de tu casa.</h1>
+      <p>Madera sólida y telas resistentes, hechos en Baja California. Pasa el cursor sobre cualquier mueble para ver sus medidas y agregarlo a tu carrito.</p>
+      <a class="btn-cta" href="#catalogo">Ver catálogo</a>
+    </div>
+    <div class="art" id="heroArt"></div>
+  </div>
+</section>
+
+<div class="tabs" id="catalogo">
+  <div class="wrap" id="tabs"></div>
+</div>
+
+<main class="wrap">
+  <div class="titulo"><strong id="tituloCat">Salas</strong><span>Ahorra 5% al comprar en conjunto.</span></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="beneficios" id="beneficios">
+  <div class="wrap">
+    <div><h5>Envío sin costo</h5><p>En compras mayores a $5,000 MXN dentro de Baja California.</p></div>
+    <div><h5>Garantía de 2 años</h5><p>Estructura y acabados cubiertos contra defectos de fabricación.</p></div>
+    <div><h5>30 días para decidir</h5><p>Si no te convence en tu sala, lo recogemos sin costo.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span><b>CimaMuebles</b> · Prototipo de tienda en línea</span><span>Precios en pesos mexicanos (MXN) · <a href="admin.html">Administración</a></span></div></footer>
+
+<div class="velo" id="velo"></div>
+<aside class="panel" id="panel" aria-label="Carrito" aria-hidden="true">
+  <header><h2>Tu carrito</h2><button class="cerrar" id="cerrarCarrito" aria-label="Cerrar carrito">✕</button></header>
+  <div class="lineas" id="lineas"></div>
+  <div class="total"><span>Total</span><span id="total">$0</span></div>
+  <form id="formPago" class="form-pago" novalidate>
+    <label for="pagoNombre">Nombre</label>
+    <input id="pagoNombre" name="nombre" autocomplete="name" maxlength="100" required>
+    <label for="pagoEmail">Correo</label>
+    <input id="pagoEmail" name="email" type="email" autocomplete="email" maxlength="150" required>
+    <p class="mensaje" id="mensajePago" role="status" aria-live="polite"></p>
+    <button class="pagar" id="pagar" type="submit">Finalizar compra</button>
+  </form>
+</aside>
+
+<script src="js.js"></script>
+
+</body>
+</html>
